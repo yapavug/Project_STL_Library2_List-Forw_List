@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <forward_list>
 using namespace std;
 
 
@@ -67,20 +68,64 @@ int main()
 	myLst.reverse();
 
 	//myLst.clear();
-
 	
-	advance(itLt, 3); // Метод для сдвига итератора
-	myLst.insert(itLt, 111); // Метод для вставки эл-та
-	myLst.erase(itLt); // Метод для удаления эл-та
+	
+	//advance(itLt, 3); // Метод для сдвига итератора
+	//myLst.insert(itLt, 111); // Метод для вставки эл-та
+	//myLst.erase(itLt); // Метод для удаления эл-та
 
-	myLst.remove(111); // Удаление эл-та по его значению
+	//myLst.remove(111); // Удаление эл-та по его значению
 
-	myLst.assign(3, 0); // Удаляет предыдущие эл-ты и заполняет 3 нулями
+	//myLst.assign(3, 0); // Удаляет предыдущие эл-ты и заполняет 3 нулями
 
-	list<int>myLst2 = { 1,2,3,4,5 };
+	//list<int>myLst2 = { 1,2,3,4,5 };
 
-	myLst.assign(myLst2.begin(), myLst2.end()); // Теперь в myLst копированы эл-ты из myLst2
+	//myLst.assign(myLst2.begin(), myLst2.end()); // Теперь в myLst копированы эл-ты из myLst2
 
+
+
+
+
+	cout << "Part 1	---		FORWARD_LIST		---" << endl << endl;
+	// Представляет реализацию односвязного списка
+
+	forward_list<int> fl = { 1,2,3 };
+	fl.push_front(0);
+	fl.push_front(-1);
+	for (auto ef : fl)
+	{
+		cout << '\t' << ef << endl;
+	}
+	cout << endl;
+
+	forward_list<int>::iterator ifl = fl.begin();
+
+
+	fl.erase_after(ifl);
+
+	for (auto ef : fl)
+	{
+		cout << '\t' << ef << endl;
+	}
+	cout << endl;
+
+	fl.insert_after(ifl, 0);
+
+	for (auto ef : fl)
+	{
+		cout << '\t' << ef << endl;
+	}
+	cout << endl;
+
+	ifl = fl.before_begin();
+
+	fl.insert_after(ifl, 100);
+
+	for (auto ef : fl)
+	{
+		cout << '\t' << ef << endl;
+	}
+	cout << endl;
 
 	return 0;
 }
